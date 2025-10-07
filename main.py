@@ -1,23 +1,23 @@
 import whisper
 
-def transcrever_audio(audio_path, idioma="pt"):
-    # Carrega o modelo base (há opções menores e maiores)
+def transcrever_audio(audio_path, lang="pt"):
+    # Loads base model (There are smaller and larger options)
     model = whisper.load_model("base")
+    # model = whisper.load_model("medium")
 
-    # Transcreve o áudio
-    resultado = model.transcribe(audio_path, language=idioma)
+    # transcribes the audio
+    result = model.transcribe(audio_path, language=lang)
 
-    return resultado["text"]
+    return result["text"]
 
-# Exemplo de uso:
+# Use example:
 if __name__ == "__main__":
-    arquivo_audio = "entrevista.mp3"
-    texto_transcrito = transcrever_audio(arquivo_audio, idioma="pt")
-    print(texto_transcrito)
+    audio_file = "interview.mp3"
+    transcribed_text = transcrever_audio(audio_file, lang="pt")
+    print(transcribed_text)
 
     # Salva em arquivo
-    with open("entrevista_transcrita.txt", "w", encoding="utf-8") as f:
-        f.write(texto_transcrito)
+    with open("interview_transcrita.txt", "w", encoding="utf-8") as f:
+        f.write(transcribed_text)
 
-    print("-----")
-    print("Done!")
+    print("Done! Check the interview_transcrita.txt file")
